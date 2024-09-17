@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import clsx from "clsx";
+const App = () => {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [bgColor,setBgColor] = useState("bg-green-400");
+  
+  return  (
+    <div className={clsx("flex flex-col items-center justify-center h-screen",bgColor)} >
+      <label htmlFor="colorPicker" className="text-4xl text-white pb-16 font-bold" >Pick a color</label>
+    <select
+     
+      id="colorPicker"
+      value={bgColor}
+      onChange={(e)=>{
+        setBgColor(e.target.value);
+      }}
+      className={clsx("border-8 border-white text-white rounded-md p-1",bgColor)}>
+
+      <option value="bg-red-400" >red</option>
+      <option value="bg-blue-400" >blue</option>
+      <option value="bg-yellow-400" >yellow</option>
+      <option value="bg-green-400" >green</option>
+      <option value="bg-purple-400" >purple</option>
+      
+    </select>
+  </div>
+    );
+};
 
 export default App;
